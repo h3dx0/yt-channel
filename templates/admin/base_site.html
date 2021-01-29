@@ -1,0 +1,12 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% load staticfiles %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/admin/admin.css' %}">
+{% endblock %}
+{% block branding %}
+    <img src="{% static 'img/yourface.png' %}" alt="SITIO" width="80">
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

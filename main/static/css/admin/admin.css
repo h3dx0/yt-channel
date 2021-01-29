@@ -1,0 +1,6 @@
+#header {
+    background: black;
+}
+.module h2, .module caption, .inline-group h2 {
+    background: red;
+}
