@@ -1,9 +1,10 @@
 from django.http.response import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from main.forms import ProductForm
 from main.models import Product
+from django.contrib import messages
 
 
 @login_required
@@ -23,7 +24,11 @@ def create_product(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/product-created')
+            messages.add_message(request=request,level=messages.SUCCESS, message="Producto creado con éxito")
+            return redirect('/inicio')
+        else:
+            messages.add_message(request=request,level=messages.ERROR, message="Producto no fue agregado")
+
     context = {
        'form': form
     }
